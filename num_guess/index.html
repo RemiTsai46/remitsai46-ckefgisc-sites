@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+    <style>
+        div {
+            border: 3px solid #cc99ff;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            background-image: linear-gradient(45deg,#99ccffcc 0%,#cc99ffcc 50%,#ff9999cc 100%);
+        }
+
+        pre {
+            margin: 0;
+            padding: 0;
+            color: white;
+            pointer-events: none;
+        }
+
+        pre::selection {
+            background-color: #0000ff;
+            color: rgb(255, 255, 255);
+        }
+
+        #dd {
+            background-color: #eee;
+        }
+        h1 {
+            text-align: center;
+            /* background-color: white; */
+        }
+        h2 {
+            display: block;
+        }
+        input{
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+        button{
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            margin-top: 15px;
+        }
+        #input{
+            display: none;
+        }
+        #enter{
+            display: none;
+        }
+        #start{
+            font-size: 24px
+        }
+        p{
+            color: black;
+            /*background-color: white;*/
+        }
+        .video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            border: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+          
+        #bgvid {
+            display: none; /* hide until ready */
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: 100vh;
+            
+            object-fit: cover; /* fills without stretching */
+            border: none;
+            background-color:#cc99ff;
+          }
+    </style>
+</head>
+<body style="height: 100vh; background-image: linear-gradient(45deg,#99ccff 0%,#cc99ff 50%,#ff9999 100%);" onclick="startmusic()"> <!-- background-image: url(); s-->
+    <video autoplay muted loop playsinline 
+    id="bgvid" style="display:none" class="video-bg">
+        <source src="bg_vid.webm" type="video/mp4">
+    </video>
+    <div>
+        <h1 style="padding: 2px 5px;border-radius: 4px;">
+            Number Guessing Game
+        </h1>
+        <input type="number" id="input" placeholder="Enter number (0-100)">
+        <button id="start" onclick="start(); ">START</button>
+        <button id="enter" onclick="enterOnClick()">Enter</button>
+        <p id="output" style="display: none;padding: 2px 5px;border-radius: 4px;"></p>
+    </div>
+    <script>
+        let state = 0;
+        function randIntGen(){
+            let ans = Math.floor(Math.random() * (100 - 0 + 1));
+            return ans;
+        }
+        function start(){
+            document.getElementById("start").style.display = "none";
+            document.getElementById("enter").textContent = "Enter";
+            document.getElementById("enter").style.display = "block";
+            document.getElementById("input").value = "";
+            document.getElementById("input").style.display = "block";
+            document.getElementById("bgvid").style.display = "block";
+            ans = randIntGen();
+            console.log(document.getElementById("bgvid"))
+            state = 1;
+        }
+        function startmusic(){
+            document.getElementById("bgvid").muted = false;
+            document.getElementById("bgvid").play().catch(err => console.log("Play blocked:", err));
+        }
+        function enterOnClick(){
+            if (state == 1) {
+                determine();
+            } else if (state == 2) {
+                reset();
+            }
+        }
+
+        function determine(){
+            let input = parseInt(document.getElementById("input").value);
+            console.log(input)
+            document.getElementById("output").style.display = "inline-block";
+            if(input > ans){
+                document.getElementById("output").textContent = "Too big!";
+            }
+            else if(input < ans){
+                document.getElementById("output").textContent = "Too small!";
+            }
+            else if(input === ans){
+                state = 2;
+                document.getElementById("output").textContent = "You're right!";
+                document.getElementById("enter").textContent = "Reset"
+                // document.getElementById("enter").onclick="reset()";
+            }
+        }
+        function reset(){
+            state = 0;
+            document.getElementById("start").style.display = "block";
+            document.getElementById("enter").style.display = "none";
+            document.getElementById("input").style.display = "none";
+            document.getElementById("output").style.display = "none";
+        }
+    </script>
+</body></html>
