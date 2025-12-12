@@ -1,0 +1,28 @@
+*{
+    text-align: center;
+    color: white;
+}
+body{
+    background-image: linear-gradient(#f00 0%, #00f 100%)
+}
+h1{
+    font: 80px Arial,sans-serif;
+}
+p{
+    font: 50px Impact,sans-serif;
+}
+img{
+    width: 25%;
+    height: 25%;
+    margin-bottom: 10px;
+}
+a{
+    font: 30px "Comic Sans MS", sans-serif;
+    color: yellow;
+    background-color: black;
+    padding: 5px 10px;
+    border-top: dashed 3px white;
+    border-right: dashed 5px white;
+    border-bottom: dashed 4px gray;
+    border-left: dashed 2px gray;
+}
