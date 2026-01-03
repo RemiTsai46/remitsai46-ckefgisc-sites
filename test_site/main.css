@@ -1,0 +1,23 @@
+img{
+    height: 30%;
+    width: 30%;
+}
+#eye_burn{
+    background-color: white;
+    color: blue;
+    width: 7rem;
+    height: 20px;
+    padding: 0px;
+}
+div{
+    margin: 10px
+}
+#imgs{
+    display: flex;
+    align-items: center;
+    align-content: space-around;
+    flex-wrap: wrap;
+    flex: 0 0 calc((100% - 32px) / 3); /* 3 items, 2 gaps */
+
+    justify-content: center;
+}

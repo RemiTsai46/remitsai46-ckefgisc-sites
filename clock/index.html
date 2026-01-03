@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="tabs">
+        <button id="ti" class="tab" onclick="show_timer()">Timer</button>
+        <button id="cd" class="tab" onclick="show_cntdn()">Countdown</button>
+    </div>
+
+    <h1 id="clock">00:00:00.00</h1>
+
+    <div id="timer">
+        <button id="lap" class="cd_btn">Lap</button>
+    </div>
+    <div id="cntdn">
+        <div id="cd_ins" class="cntdn">
+            <input id="cd_hr" class="cd_in" value="0" placeholder="Hour">
+            <input id="cd_mn" class="cd_in" value="0" placeholder="Minute">
+            <input id="cd_sc" class="cd_in" value="0" placeholder="Second">
+        </div>
+        <div id="cd_btns" class="cntdn">
+            <button id="cd_reset" class="cd_btn" onclick="reset_cd()">Reset</button>
+            <button id="cd_start" class="cd_btn" onclick="start_cd()">Start</button>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body></html>
