@@ -6,8 +6,17 @@ button.addEventListener("mouseleave", () => {
     button.style.backgroundColor = "white";
 });
 button.addEventListener("click", () => {
-    button.style.backgroundColor = button.style.backgroundColor === "red" ? "white" : "red";
+    button.style.backgroundColor = button.style.backgroundColor === "lightpink" ? "lightskyblue" : "lightpink";
 });
+
+let numObj = document.getElementById("num")
+
+numObj.textContent = Math.floor(Math.random()*101)
+
+let r = Math.floor(Math.random()*127)+128
+let g = Math.floor(Math.random()*127)+128
+let b = Math.floor(Math.random()*127)+128
+numObj.style.color = `rgb(${r},${g},${b})`
 
 const imgs = document.querySelectorAll("img")
 let imgSrc = []
@@ -23,7 +32,15 @@ function change_photo(imgId){
 button.addEventListener("click", () => {
     imgs.forEach(imgId => {
         imgId.src = imgSrc[Math.floor(Math.random()*imgs.length)]
-})});
+    })
+
+    numObj.textContent = Math.floor(Math.random()*101)
+
+    r = Math.floor(Math.random()*127)+128
+    g = Math.floor(Math.random()*127)+128
+    b = Math.floor(Math.random()*127)+128
+    numObj.style.color = `rgb(${r},${g},${b})`
+});
 
 
 /*
